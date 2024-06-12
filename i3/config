@@ -20,6 +20,20 @@ for_window [class="^.*"] border pixel 2
                          # class                 border  backgr. text    indicator child_border
 for_window [class="^.*"] client.focused          #77dd77 #285577 #ffffff #2e9ef4   #285577
 
+# Set the floating window transparency
+for_window [window_role="^.*"] opacity 0.9
+
+# Set specific window transparency for focused and unfocused states
+for_window [class="^.*"] opacity 0.9
+for_window [class="^.*"] opacity 0.7
+
+# Set gaps for all workspaces
+gaps inner 2
+gaps outer 10
+
+# Alternatively, if you want to control opacity manually, use the following:
+# bindsym $mod+o exec --no-startup-id xprop -id $(xdotool getactivewindow) -f _NET_WM_WINDOW_OPACITY 32c -set _NET_WM_WINDOW_OPACITY 0xE6666666
+
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
@@ -208,9 +222,24 @@ bar {
 # set keyboard layout to CH/DE
 exec_always --no-startup-id setxkbmap ch de
 
+# Set the wallpaper using feh
+exec_always --no-startup-id feh --bg-fill /home/sale/Pictures/wallpapers/ayu-dark.png
+
 # set lockscreen i3lock-fancy
 bindsym $mod+Shift+Escape exec --no-startup-id i3lock-fancy
+
 # Set GTK theme
 exec_always --no-startup-id gnome-settings-daemon
-exec_always --no-startup-id gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
+exec --no-startup-id gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
 
+# Set activate picom 
+exec_always --no-startup-id picom
+
+# Automatically lock screen after 10 minutes of inactivity
+exec_always --no-startup-id xautolock -time 10 -locker "i3lock-fancy --nofork"
+
+# Autotiling
+exec_always --no-startup-id ~/.autotiling_venv/bin/autotiling
+
+# Take screenshot
+# todo
