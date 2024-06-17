@@ -223,20 +223,19 @@ bar {
 exec_always --no-startup-id setxkbmap ch de
 
 # Set the wallpaper using feh
-exec_always --no-startup-id feh --bg-fill /home/sale/Pictures/wallpapers/ayu-dark.png
+exec_always --no-startup-id feh --bg-fill /home/sale/.config/wallpapers/city_sunset.jpg
+
+# Set the display to sleep after 15 minutes of inactivity
+exec --no-startup-id xset dpms 900 900 900
 
 # set lockscreen i3lock-fancy
 bindsym $mod+Shift+Escape exec --no-startup-id i3lock-fancy
-
-# Set GTK theme
-exec_always --no-startup-id gnome-settings-daemon
-exec --no-startup-id gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
 
 # Set activate picom 
 exec_always --no-startup-id picom
 
 # Automatically lock screen after 10 minutes of inactivity
-exec_always --no-startup-id xautolock -time 10 -locker "i3lock-fancy --nofork"
+exec_always --no-startup-id xautolock -time 10 -locker "i3lock-fancy"
 
 # Autotiling
 exec_always --no-startup-id ~/.autotiling_venv/bin/autotiling
