@@ -241,4 +241,10 @@ exec_always --no-startup-id xautolock -time 10 -locker "i3lock-fancy"
 exec_always --no-startup-id ~/.autotiling_venv/bin/autotiling
 
 # Take screenshot
-# todo
+bindsym --release $mod+p exec --no-startup-id scrot -s -e 'mv $f ~/Pictures/Screenshots'
+
+# Increase and decrease brigthness
+bindsym XF86MonBrightnessUp exec brightnessctl set +10%
+bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
+
+
